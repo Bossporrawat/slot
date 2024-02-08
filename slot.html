@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slot Machine Website</title>
+    <style>
+        /* CSS Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+        }
+        main {
+            padding: 20px;
+        }
+        #slot-machine {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .reel {
+            display: flex;
+            flex-direction: column;
+            margin-right: 20px;
+        }
+        .slot {
+            width: 50px;
+            height: 50px;
+            background-color: #ccc;
+            border: 1px solid #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Our Slot Machine Website</h1>
+    </header>
+    <main>
+        <section id="slot-machine">
+            <div class="reel" id="reel1">
+                <div class="slot">1</div>
+                <div class="slot">2</div>
+                <div class="slot">3</div>
+            </div>
+            <div class="reel" id="reel2">
+                <div class="slot">4</div>
+                <div class="slot">5</div>
+                <div class="slot">6</div>
+            </div>
+            <div class="reel" id="reel3">
+                <div class="slot">7</div>
+                <div class="slot">8</div>
+                <div class="slot">9</div>
+            </div>
+        </section>
+        <!--<input type="range" id="probability-range" name="probability" min="1" max="100" value="70">-->
+        <h3 id="result"></h3>
+        <button id="spin-button">Spin</button>
+    </main>
+    <footer>
+        <p>&copy; 2024 Slot Machine Website. All rights reserved.</p>
+    </footer>
+    <script>
+        // JavaScript Code
+        document.getElementById('spin-button').addEventListener('click', function() {
+            // Get the probability from the range input
+            var probability = 10 / 100;
+
+            // Generate a random number between 0 and 1
+            var randomProbability = Math.random();
+
+            // Declare variables to store the results
+            var reel1, reel2, reel3;
+
+            // Check if the random probability is less than the selected probability
+            if (randomProbability < probability) {
+                // Generate a random number for each reel
+                reel1 = 9;
+                reel2 = 9;
+                reel3 = 9;
+
+                // Update the slots with the random numbers
+                document.getElementById('reel1').innerHTML = '<div class="slot">' + reel1 + '</div>';
+                document.getElementById('reel2').innerHTML = '<div class="slot">' + reel2 + '</div>';
+                document.getElementById('reel3').innerHTML = '<div class="slot">' + reel3 + '</div>';
+
+                // Display winning message
+                document.getElementById('result').textContent = 'เชี่ยนี่ดวงดีว่ะมึงได้ $9999999999999999999999999999999999999999';
+            } else {
+                // Generate random numbers for each reel
+                reel1 = Math.floor(Math.random() * 9) + 1;
+                reel2 = Math.floor(Math.random() * 9) + 1;
+                reel3 = Math.floor(Math.random() * 9) + 1;
+
+                // Update the slots with the random numbers
+                document.getElementById('reel1').innerHTML = '<div class="slot">' + reel1 + '</div>';
+                document.getElementById('reel2').innerHTML = '<div class="slot">' + reel2 + '</div>';
+                document.getElementById('reel3').innerHTML = '<div class="slot">' + reel3 + '</div>';
+
+                // Display losing message
+                document.getElementById('result').textContent = '55 ไอโง่กากว่ะเรทตั้ง 10 % มึงยังเลยยยยย';
+            }
+        });
+    </script>
+</body>
+</html>
